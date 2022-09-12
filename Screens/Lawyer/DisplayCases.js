@@ -7,7 +7,7 @@ import {addIssues} from '../../Redux/Action1';
 import SingullarCase from './SingullarCase';
 import { Entypo } from '@expo/vector-icons'; 
 
-const DisplayCases = () => {
+const DisplayCases = (props) => {
 
     const db = getFirestore(app);
 
@@ -31,17 +31,18 @@ const DisplayCases = () => {
 
   const cases=show.issues
  // console.log(cases);
-
+//#8DB580
+//#4B4A67
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.main}>
-                <Entypo name="text-document" size={50} color="black" />
+                <Entypo name="text-document" size={50} color="#4B4A67" />
                 <Text style={styles.cases}>CASES</Text>
             </View>
             <View style={styles.list}>
                 <FlatList
                 data = {cases}
-                renderItem = {(item) => <SingullarCase pass={item.item.issue} /> } 
+                renderItem = {(item) => <SingullarCase pass={item.item.issue} navigation={props.navigation} /> } 
                 keyExtractor = {(item) => item.id}
                 />
             </View>
@@ -51,7 +52,7 @@ const DisplayCases = () => {
 
 const styles = StyleSheet.create({
     main: {
-        flex:0.1, 
+        flex: 0.1, 
         flexDirection:'row', 
         alignItems:'center', 
         justifyContent:'center',
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     cases: {
         fontSize: 25,
         fontFamily: 'KohinoorTelugu-Medium',
-        color:'black',
+        color:'#4B4A67',
     },
     list: {
         flex: 1,

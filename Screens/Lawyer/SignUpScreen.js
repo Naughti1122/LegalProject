@@ -20,7 +20,7 @@ const SignUpScreen = ({navigation}) => {
 
           <View 
             style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
-            <Ionicons style={{paddingHorizontal:10}} name="person-add-outline" size={30} color="black" />
+            <Ionicons style={{paddingHorizontal:10}} name="person-add-outline" size={30} color="#4B4A67" />
             <TextInput
               value={username} 
               onChangeText={(username)=>{setUserName(username)}}
@@ -29,7 +29,7 @@ const SignUpScreen = ({navigation}) => {
 
           <View 
             style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
-            <AntDesign style={{paddingHorizontal:10}} name="mail" size={30} color="black" />
+            <AntDesign style={{paddingHorizontal:10}} name="mail" size={30} color="#4B4A67" />
             <TextInput
               onChangeText={(email)=>{setEmail(email)}}
               value={email}
@@ -38,7 +38,7 @@ const SignUpScreen = ({navigation}) => {
 
           <View 
             style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
-            <FontAwesome5 style={{paddingHorizontal:10}} name="user-lock" size={30} color="black" />
+            <FontAwesome5 style={{paddingHorizontal:10}} name="user-lock" size={30} color="#4B4A67" />
             <TextInput
               onChangeText={(password)=>{setPassword(password)}}
               value={password}
@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 40,
-    color: 'black',
+    color: '#4B4A67',
     alignSelf: 'center',
     fontFamily: 'KohinoorTelugu-Medium',
   },
   miniheader: {
     fontSize: 15,
     marginBottom: 50,
-    color: 'black',
+    color: '#4B4A67',
     alignSelf: 'center',
     fontFamily: 'KohinoorTelugu-Medium',
   },
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     width:250
   },
   btnContainer: {
-    backgroundColor:'black',
+    backgroundColor:'#4B4A67',
     borderRadius: 50,
     marginTop: 30
   }

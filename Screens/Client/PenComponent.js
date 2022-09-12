@@ -6,7 +6,8 @@ import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import app from '../../Firebase/Config';
 import { v4 as uuidv4 } from 'uuid';
 import { doc, setDoc, getFirestore } from "firebase/firestore";
-import checkprogress from '../../assets/checkprogress.json';
+import newloader from '../../assets/newloader.json';
+import LottieView from 'lottie-react-native';
 
 
 const PenComponent = ({navigation}) => {
@@ -34,7 +35,8 @@ const PenComponent = ({navigation}) => {
       } catch (error) {
         console.log(error);    
       }
-      navigation.navigate('CaseSubmitted');
+      alert('Case Submitted!')
+      navigation.navigate('HomeScreen')
       setIssue('');
       setEmail('');
       setPhoneNumber('');
@@ -65,12 +67,12 @@ const PenComponent = ({navigation}) => {
                 maxLength={400} placeholder="Summarize your case here..." 
                 style={styles.textInput} />
             </View>
-              <View style={{marginTop:30}}>
+              <View style={{marginTop:20}}>
                 <Text 
                 style={{fontSize:18, marginBottom: 10, fontFamily:'KohinoorTelugu-Medium', color:'black', textAlign:'center'}}>
                   HOW DO YOU WISH TO BE CONTACTED</Text>
                 <Text
-                style={{fontSize:13, color:'black', textAlign:'center', fontWeight:'500'}}>
+                style={{fontSize:13, color:'black', textAlign:'center', fontWeight:'500', padding: 10}}>
                   Please provide at least one</Text>
                 <View style={{alignItems:'flex-start', marginHorizontal:50}}>
                   <View style={styles.infills}>
@@ -98,6 +100,7 @@ const PenComponent = ({navigation}) => {
     </KeyboardAvoidingView>
             <View style={{alignItems:'center'}}>
                 <TouchableOpacity onPress={handlepush}>
+                <LottieView style={{width:100, height:100}}  progress={progress} source={newloader} />
                   <Text style={styles.next}>POST CASE</Text>
                 </TouchableOpacity>
     </View>
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
   },
   infills: {
     flexDirection:'row',
-    marginVertical: 15,
+    marginVertical: 20,
   },
   infilltext: {
     fontSize: 16,

@@ -12,20 +12,20 @@ const HomeScreen = ({navigation}) => {
           <Text style={styles.home}>Go LEGAL</Text>
       </View>
       <View style={styles.bottom}>
-            <Text style={{fontWeight: 'bold', fontSize: 15, color:'black', padding: 50}}>ARE YOU A</Text>
+            <Text style={{fontWeight: 'bold', fontSize: 15, color:'#4B4A67', padding: 50}}>ARE YOU A</Text>
             <View style={styles.bottomtext}>
           <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('SignUpScreen')}>
               <Text style={styles.option}>LAWYER</Text>
           </TouchableOpacity>
-              <Text style={{fontWeight: 'bold', fontSize: 15, color:'black', paddingHorizontal:30}}> OR </Text>
+              <Text style={{fontWeight: 'bold', fontSize: 15, color:'#4B4A67', paddingHorizontal:30}}> OR </Text>
           <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('PenComponent')}>
-              <Text style={styles.option}>NEED HELP!</Text>
+              <Text style={styles.option}>I NEED HELP!</Text>
           </TouchableOpacity>
             </View>
         </View>
         <View style={{flex: 0.1, alignItems:'center'}}>
-          <Text style={{color:'#8f8f8f', fontWeight: 'bold', fontSize: 12, paddingVertical: 5}}>By using Go Legal's app you agree to our</Text>
-          <Text style={{color:'#8f8f8f', fontWeight: 'bold', fontSize: 12}}>privacy policy and end user license agreement</Text>
+          <Text style={{color:'#4B4A67', fontWeight: 'bold', fontSize: 12, paddingVertical: 5}}>By using Go Legal's app you agree to our</Text>
+          <Text style={{color:'#4B4A67', fontWeight: 'bold', fontSize: 12}}>privacy policy and end user license agreement</Text>
         </View>
     </SafeAreaView>
   );
@@ -33,17 +33,17 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   imageicon: {
-    shadowColor:'black', 
+    shadowColor:'#4B4A67', 
     shadowOffset:'1', 
-    shadowColor: 'black',
+    shadowColor: '#4B4A67',
     shadowOffset: {width: -1, height: 5},
-    shadowOpacity: 0.8,
+    shadowOpacity: 0.9,
     shadowRadius: 5,
     marginTop: 50,
   },
   home:{
     fontSize: 50,
-    color:'black',
+    color:'#4B4A67',
     fontFamily: 'Palatino-Bold',
   },
   bottom: {
@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 150,
     borderBottomWidth: 2,
-    borderBottomColor: 'black',
+    borderBottomColor: '#4B4A67',
     marginBottom: 100,
   },
   option: {
-    color: 'black',
+    color: '#4B4A67',
     fontSize: 20,
     fontWeight: '300',
     alignSelf: 'center',

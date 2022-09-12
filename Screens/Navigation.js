@@ -9,8 +9,8 @@ import DisplayCases from './Lawyer/DisplayCases';
 import SignUpScreen from './Lawyer/SignUpScreen';
 import PhoneCall from './PhoneCall';
 import Whatsapp from './Whatsapp';
-import Pageone from '../sample/Pageone';
-import Pagetwo from '../sample/Pagetwo';
+import Details from '../Screens/Details';
+import SingullarCase from './Lawyer/SingullarCase';
 
 const Navigation = () => {
 
@@ -28,8 +28,8 @@ const Navigation = () => {
           <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
           <Stack.Screen name='PhoneCall' component={PhoneCall} />
           <Stack.Screen name='Whatsapp' component={Whatsapp} />
-          <Stack.Screen name='Pageone' component={Pageone} />
-          <Stack.Screen name='Pagetwo' component={Pagetwo} />
+          <Stack.Screen name='Details' component={Details} />
+          <Stack.Screen name='SingullarCase' component={SingullarCase} />
         </Stack.Navigator>
     </NavigationContainer>
   );
