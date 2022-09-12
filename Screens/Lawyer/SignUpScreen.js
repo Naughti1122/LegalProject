@@ -1,20 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons'; 
 import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, SafeAreaView, ImageBackground, TouchableOpacity  } from 'react-native';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
+
+  const [username, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+
   return (  
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
-          <Text style={styles.header}>Welcome!</Text>
+          <Text style={styles.header}>WELCOME!</Text>
           <Text style={styles.miniheader}>Create an account here</Text>
-          <TextInput placeholder="Username" style={styles.textInput} />
-          <TextInput placeholder="Email" style={styles.textInput} />
-          <TextInput placeholder="Phone Number" style={styles.textInput} />
-          <TextInput placeholder="Password" style={styles.textInput} />
-          <TouchableOpacity style={styles.btnContainer}>
+
+          <View 
+            style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
+            <Ionicons style={{paddingHorizontal:10}} name="person-add-outline" size={30} color="black" />
+            <TextInput
+              value={username} 
+              onChangeText={(username)=>{setUserName(username)}}
+              keyboardType='default' placeholder="Username" style={styles.textInput} />
+          </View>
+
+          <View 
+            style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
+            <AntDesign style={{paddingHorizontal:10}} name="mail" size={30} color="black" />
+            <TextInput
+              onChangeText={(email)=>{setEmail(email)}}
+              value={email}
+              keyboardType='email-address' placeholder="Email" style={styles.textInput} />
+          </View>
+
+          <View 
+            style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
+            <FontAwesome5 style={{paddingHorizontal:10}} name="user-lock" size={30} color="black" />
+            <TextInput
+              onChangeText={(password)=>{setPassword(password)}}
+              value={password}
+              keyboardType='default'
+              returnKeyType='done'
+              secureTextEntry={true} placeholder="Password" style={styles.textInput} />
+          </View>
+
+          <TouchableOpacity style={styles.btnContainer} onPress={()=>navigation.navigate('DisplayCases')}>
                 <Text style={{fontFamily: 'KohinoorTelugu-Medium',alignSelf: 'center', color: 'white', padding:10}}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
@@ -34,29 +67,28 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 40,
-    color: '#3FA8FE',
+    color: 'black',
     alignSelf: 'center',
-    fontWeight: '300',
+    fontFamily: 'KohinoorTelugu-Medium',
   },
   miniheader: {
     fontSize: 15,
     marginBottom: 50,
-    color: '#3FA8FE',
+    color: 'black',
     alignSelf: 'center',
     fontFamily: 'KohinoorTelugu-Medium',
   },
   textInput: {
-    height: 50,
-    borderColor: "#3FA8FE",
+    borderColor: "#8f8f8f",
     borderBottomWidth: 1,
-    marginBottom: 30,
-    fontSize: 15,
+    fontSize: 18,
     fontFamily: 'KohinoorTelugu-Medium',
+    width:250
   },
   btnContainer: {
-    backgroundColor:'#3FA8FE',
-    marginTop: 10,
-    borderRadius: 50
+    backgroundColor:'black',
+    borderRadius: 50,
+    marginTop: 30
   }
 });
 

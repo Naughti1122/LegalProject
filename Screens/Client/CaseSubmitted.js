@@ -7,7 +7,7 @@ import { Octicons, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 const CaseSubmitted = () => {
     return (
         <SafeAreaView style={{flex:1, backgroundColor:'white'}}>
-            <ScrollView style={{flex:1, backgroundColor:'#3FA8FE' }}>
+            <ScrollView style={{flex:1, backgroundColor:'#a56d51'}}>
                 <View style={{alignItems:'center', justifyContent:'center'}}>
                     <MaterialCommunityIcons name="email-check-outline" size={80} color="white" />
                     <Text style={styles.submitted}>Your Case Has Been Submitted Successfully!</Text>
