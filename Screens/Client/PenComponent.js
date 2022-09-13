@@ -8,22 +8,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 
-const PenComponent = () => {
+const PenComponent = ({navigation}) => {
 
   const [issue, setIssue] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
 
   const db = getFirestore(app);
 
     const handlepush = async () => {
       const newIssue = {
         issue: issue,
+        name: name,
         email: email,
         phoneNumber: phoneNumber,
+        whatsapp: phoneNumber,
         id: uuidv4()
-      }
+      };
       try {
         await setDoc(doc(db, "Cases", newIssue.id), newIssue);
       } catch (error) {
@@ -34,6 +36,7 @@ const PenComponent = () => {
       setIssue('');
       setEmail('');
       setPhoneNumber('');
+      navigation.navigate('HomeScreen')
     };
 
 
@@ -56,8 +59,17 @@ const PenComponent = () => {
               <View style={{marginTop:20}}>
                 <Text 
                 style={{fontSize:18, marginBottom: 10, fontFamily:'KohinoorTelugu-Medium', color:'#4B4A67', textAlign:'center'}}>
-                  HOW DO YOU WISH TO BE CONTACTED</Text>
+                  FILL THE FORMS BELOW</Text>
                 <View style={{alignItems:'flex-start', marginHorizontal:50}}>
+                <View style={styles.infills}>
+                      <Ionicons style={{paddingHorizontal:10}} name="person-add-outline" size={30} color="#4B4A67"  />
+                    <TextInput
+                      onChangeText={(name)=>{setName(name)}} 
+                      value={name}
+                      style={styles.infilltext}
+                      keyboardType='default' 
+                      placeholder='Name' />
+                  </View>
                   <View style={styles.infills}>
                     <Ionicons style={{paddingHorizontal:10}} name="ios-mail-unread-outline" size={30} color="#4B4A67" /> 
                     <TextInput

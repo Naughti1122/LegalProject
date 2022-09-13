@@ -30,7 +30,7 @@ const DisplayCases = (props) => {
     const show = useSelector((state)=>state.Reducer1);
 
   const cases=show.issues
- // console.log(cases);
+  console.log(cases);
 
  const handleHomeNav = () => {
     props.navigation.navigate('HomeScreen')
@@ -48,7 +48,13 @@ const DisplayCases = (props) => {
             <View style={styles.list}>
                 <FlatList
                 data = {cases}
-                renderItem = {(item) => <SingullarCase pass={item.item.issue} navigation={props.navigation} /> } 
+                renderItem = {(item) => 
+                <SingullarCase pass={item.item.issue} 
+                phoneNumber={item.item.phoneNumber} 
+                whatsapp={item.item.whatsapp}
+                email = {item.item.email}
+                name = {item.item.name}
+                navigation={props.navigation} /> } 
                 keyExtractor = {(item) => item.id}
                 />
             </View>

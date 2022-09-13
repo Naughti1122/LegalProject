@@ -1,42 +1,58 @@
 import React from 'react';
-import {View, StyleSheet, SafeAreaView, TouchableOpacity, Text, Image} from 'react-native';
+import {View, StyleSheet, SafeAreaView, TouchableOpacity, Text, Linking} from 'react-native';
 import {Card, Title ,Paragraph} from 'react-native-paper';
 import { MaterialCommunityIcons, AntDesign, SimpleLineIcons } from '@expo/vector-icons'; 
+import * as MailComposer from 'expo-mail-composer';
 
 const SingullarCase = (props) => {
 
-    const handleNavigation = () => {
-        props.navigation.navigate('Details');
+    const handlePressCall = () => {
+        const url=`tel://${props.phoneNumber}`
+        Linking.openURL(url);
+      };
+
+    const handleWhatsapp = () => {
+            Linking.openURL(
+              'http://api.whatsapp.com/send?phone=233' + `${props.whatsapp}`
+            );
     };
+
+    const handleEmail = () => {
+        MailComposer.composeAsync({
+            recipients: 
+            [`${props.email}`],
+          });
+    };
+
 
     return (
         <SafeAreaView style={{flex:1}}>
             <Card style={Styles.container}>
                 <Card.Content>
-                    <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between', opacity:0.5}}>
+                    <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between', opacity:0.8}}>
                         <MaterialCommunityIcons name="file-document-edit-outline" size={20} color='#4B4A67' />
-                        <Text style={{fontFamily: 'KohinoorTelugu-Medium', color:'#4B4A67'}}>Go LEGAL</Text>
+                        <Text style={{fontFamily: 'KohinoorTelugu-Medium', color:'#4B4A67'}}> Post by : {props.name} </Text>
                     </View>
                 </Card.Content>
                 <Card.Content>
-                    <Paragraph style={{fontWeight:'bold', fontFamily: 'KohinoorTelugu-Medium', color:'#4B4A67', paddingVertical:10}}> {props.pass} </Paragraph>
+                    <Paragraph style={{fontWeight:'bold', fontFamily: 'KohinoorTelugu-Medium', color:'#4B4A67', paddingVertical: 10}}> {props.pass} </Paragraph>
                 </Card.Content>
                 <Card.Content style={{alignItems:'center'}}>
                     <Paragraph style={Styles.reach}>Click any of this means to help out</Paragraph>
                 </Card.Content>
                 <Card.Actions style={Styles.actions}>
 
-                    <TouchableOpacity style={{alignItems:'center'}}>
+                    <TouchableOpacity onPress={()=>{handleEmail()}} style={{alignItems:'center'}}  >
                         <AntDesign name="mail" size={20} color="#4B4A67" />
                         <Text style={Styles.action2}>Email</Text>      
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{alignItems:'center'}}>
+                    <TouchableOpacity onPress={()=>{handleWhatsapp()}} style={{alignItems:'center'}}>
                         <MaterialCommunityIcons name="whatsapp" size={20} color="#4B4A67" />
                         <Text style={Styles.action2}>Whatsapp</Text>   
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{alignItems:'center'}}>
+                    <TouchableOpacity style={{alignItems:'center'}} onPress={()=>{handlePressCall()}}>
                         <SimpleLineIcons name="call-out" size={20} color="#4B4A67" />
                         <Text style={Styles.action2}>Call</Text>
                     </TouchableOpacity>
@@ -74,7 +90,7 @@ const Styles = StyleSheet.create({
     },
     reach: {
         backgroundColor:'#4B4A67', 
-        padding:10,
+        padding: 8,
         color:'white',
         fontFamily: 'KohinoorTelugu-Medium',
     },
