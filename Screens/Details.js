@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, SafeAreaView, Text} from 'react-native';
+import {StyleSheet, SafeAreaView, Text} from 'react-native';
+import Whatsapp from './Whatsapp';
 
 const Details = () => {
     return (
         <SafeAreaView style={{flex:1}}>
-            <Text>Hello</Text>
-
+            
         </SafeAreaView>
     );
 }

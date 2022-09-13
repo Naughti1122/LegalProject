@@ -10,22 +10,22 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={{alignItems:'center', justifyContent:'center', marginTop: 30,}}>
           <Text style={styles.home}>Go LEGAL</Text>
+          <Text style={{color:'#4B4A67', fontFamily: 'KohinoorTelugu-Medium'}}>THE HOME OF LEGAL ADVICE</Text>
       </View>
       <View style={styles.bottom}>
-            <Text style={{fontWeight: 'bold', fontSize: 15, color:'#4B4A67', padding: 50}}>ARE YOU A</Text>
             <View style={styles.bottomtext}>
-          <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('SignUpScreen')}>
-              <Text style={styles.option}>LAWYER</Text>
+          <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('DisplayCases')}>
+              <Text style={styles.option}>TAKE A CASE</Text>
           </TouchableOpacity>
               <Text style={{fontWeight: 'bold', fontSize: 15, color:'#4B4A67', paddingHorizontal:30}}> OR </Text>
           <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('PenComponent')}>
-              <Text style={styles.option}>I NEED HELP!</Text>
+              <Text style={styles.option}>POST A CASE</Text>
           </TouchableOpacity>
             </View>
         </View>
         <View style={{flex: 0.1, alignItems:'center'}}>
-          <Text style={{color:'#4B4A67', fontWeight: 'bold', fontSize: 12, paddingVertical: 5}}>By using Go Legal's app you agree to our</Text>
-          <Text style={{color:'#4B4A67', fontWeight: 'bold', fontSize: 12}}>privacy policy and end user license agreement</Text>
+          <Text style={{opacity:0.5 ,color:'#4B4A67', fontWeight: '300', fontSize: 12, paddingVertical: 5}}>By using Go Legal's app you agree to our</Text>
+          <Text style={{opacity:0.5 ,color:'#4B4A67', fontWeight: '300', fontSize: 12}}>privacy policy and end user license agreement</Text>
         </View>
     </SafeAreaView>
   );
@@ -48,14 +48,14 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    alignItems:'center',
-    justifyContent: 'space-evenly' ,
+    alignItems:'center' ,
+    justifyContent: 'center' ,
   },
   bottomtext: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   optionbtn: {
-    padding: 10,
+    padding: 5,
     borderRadius: 10,
     width: 150,
     borderBottomWidth: 2,
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
   },
   option: {
     color: '#4B4A67',
-    fontSize: 20,
-    fontWeight: '300',
+    fontFamily: 'KohinoorTelugu-Medium',
     alignSelf: 'center',
+    fontSize: 20
   },
 });
 

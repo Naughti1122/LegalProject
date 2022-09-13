@@ -8,7 +8,7 @@ const Whatsapp = () => {
     return (
       <View style={styles.container}>
         <TextInput
-          value={this.state.mobile_no}
+          value={mobileNumber}
           onChangeText={(mobileNumber) => {setMobileNumber(mobileNumber)}}
           placeholder={'Enter Mobile to Send WhatsApp Message'}
           style={styles.input}

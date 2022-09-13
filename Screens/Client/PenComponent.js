@@ -6,14 +6,9 @@ import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import app from '../../Firebase/Config';
 import { v4 as uuidv4 } from 'uuid';
 import { doc, setDoc, getFirestore } from "firebase/firestore";
-import newloader from '../../assets/newloader.json';
-import LottieView from 'lottie-react-native';
 
 
-const PenComponent = ({navigation}) => {
-
-  const progress = useRef(new Animated.Value(0)).current;
-  const [hasClicked, setHasClicked] = useState(false);
+const PenComponent = () => {
 
   const [issue, setIssue] = useState('');
   const [email, setEmail] = useState('');
@@ -27,7 +22,6 @@ const PenComponent = ({navigation}) => {
         issue: issue,
         email: email,
         phoneNumber: phoneNumber,
-        whatsapp: whatsapp,
         id: uuidv4()
       }
       try {
@@ -40,14 +34,6 @@ const PenComponent = ({navigation}) => {
       setIssue('');
       setEmail('');
       setPhoneNumber('');
-      setWhatsapp('');
-      const newValue = hasClicked ? 0 : 1;
-        Animated.loop(progress,{
-            toValue: newValue,
-            duration: 1000,
-            useNativeDriver: true,
-        }).start()
-        setHasClicked(!hasClicked);
     };
 
 
@@ -69,14 +55,11 @@ const PenComponent = ({navigation}) => {
             </View>
               <View style={{marginTop:20}}>
                 <Text 
-                style={{fontSize:18, marginBottom: 10, fontFamily:'KohinoorTelugu-Medium', color:'black', textAlign:'center'}}>
+                style={{fontSize:18, marginBottom: 10, fontFamily:'KohinoorTelugu-Medium', color:'#4B4A67', textAlign:'center'}}>
                   HOW DO YOU WISH TO BE CONTACTED</Text>
-                <Text
-                style={{fontSize:13, color:'black', textAlign:'center', fontWeight:'500', padding: 10}}>
-                  Please provide at least one</Text>
                 <View style={{alignItems:'flex-start', marginHorizontal:50}}>
                   <View style={styles.infills}>
-                    <Ionicons style={{paddingHorizontal:10}} name="ios-mail-unread-outline" size={30} color="black" /> 
+                    <Ionicons style={{paddingHorizontal:10}} name="ios-mail-unread-outline" size={30} color="#4B4A67" /> 
                     <TextInput
                       onChangeText={(email)=>{setEmail(email)}} 
                       value={email}
@@ -100,7 +83,6 @@ const PenComponent = ({navigation}) => {
     </KeyboardAvoidingView>
             <View style={{alignItems:'center'}}>
                 <TouchableOpacity onPress={handlepush}>
-                <LottieView style={{width:100, height:100}}  progress={progress} source={newloader} />
                   <Text style={styles.next}>POST CASE</Text>
                 </TouchableOpacity>
     </View>
@@ -117,11 +99,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around' ,
   },
   textInput: {
-    marginTop: 10,
+    marginTop: 20,
     fontSize: 15,
     color: 'white',
     fontFamily: 'KohinoorTelugu-Medium',
-    backgroundColor: '#8f8f8f',
+    backgroundColor: '#4B4A67',
     padding: 10,
     height: 200,
   },
@@ -129,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
     fontFamily: 'KohinoorTelugu-Medium',
-    backgroundColor: '#8f8f8f',
+    backgroundColor: '#4B4A67',
     padding: 10,
   },
   btnContainer: {
@@ -138,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   next: {
-    backgroundColor:'#8f8f8f',
+    backgroundColor:'#4B4A67',
     paddingHorizontal: 30,
     paddingVertical: 20,
     color:'white',

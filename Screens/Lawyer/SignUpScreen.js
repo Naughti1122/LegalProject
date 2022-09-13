@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons'; 
-import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, SafeAreaView, ImageBackground, TouchableOpacity  } from 'react-native';
+import { View, KeyboardAvoidingView, 
+TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback,
+Keyboard, TouchableOpacity  } from 'react-native';
+import app from '../../Firebase/Config';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = ({navigation}) => {
 
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const auth = getAuth(app);
+
+  // const handleSignUp = () => {
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //   .then(userCredentials => {
+  //     const user = userCredentials.user;
+  //     console.log('Logged In with:', user.email);
+  //     navigation.navigate('DisplayCases')
+  // })
+  // .catch(error =>alert('Log In First'));
+  // };
+
+
 
 
   return (  

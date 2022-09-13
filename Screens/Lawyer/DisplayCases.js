@@ -5,7 +5,7 @@ import { collection, query, onSnapshot, getFirestore } from "firebase/firestore"
 import { useDispatch, useSelector } from 'react-redux';
 import {addIssues} from '../../Redux/Action1';
 import SingullarCase from './SingullarCase';
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo, Ionicons } from '@expo/vector-icons'; 
 
 const DisplayCases = (props) => {
 
@@ -31,13 +31,19 @@ const DisplayCases = (props) => {
 
   const cases=show.issues
  // console.log(cases);
-//#8DB580
-//#4B4A67
+
+ const handleHomeNav = () => {
+    props.navigation.navigate('HomeScreen')
+ };
+
     return (
-        <SafeAreaView style={{flex: 1}}>
-            <View style={styles.main}>
-                <Entypo name="text-document" size={50} color="#4B4A67" />
-                <Text style={styles.cases}>CASES</Text>
+        <SafeAreaView style={{flex: 1, backgroundColor:'#dcdcde'}}>
+            <View style={{flex: 0.1,flexDirection:'row', alignItems:'center'}}>
+                <Ionicons onPress={handleHomeNav} style={{paddingRight:120}} name="md-home-outline" size={30} color="#4B4A67" />
+                <View style={styles.main}>
+                    <Entypo name="text-document" size={50} color="#4B4A67" />
+                    <Text style={styles.cases}>CASES</Text>
+                </View>
             </View>
             <View style={styles.list}>
                 <FlatList
@@ -52,7 +58,6 @@ const DisplayCases = (props) => {
 
 const styles = StyleSheet.create({
     main: {
-        flex: 0.1, 
         flexDirection:'row', 
         alignItems:'center', 
         justifyContent:'center',
