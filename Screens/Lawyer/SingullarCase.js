@@ -35,10 +35,10 @@ const SingullarCase = (props) => {
                     </View>
                 </Card.Content>
                 <Card.Content>
-                    <Paragraph style={{fontWeight:'bold', fontFamily: 'KohinoorTelugu-Medium', color:'#4B4A67', paddingVertical: 10}}> {props.pass} </Paragraph>
+                    <Paragraph style={{fontFamily:'Damascus', color:'#4B4A67', paddingVertical: 30}}> {props.pass} </Paragraph>
                 </Card.Content>
                 <Card.Content style={{alignItems:'center'}}>
-                    <Paragraph style={Styles.reach}>Click any of this means to help out</Paragraph>
+                    <Paragraph style={Styles.reach}>CLICK ANY ON THIS MEANS TO HELP OUT</Paragraph>
                 </Card.Content>
                 <Card.Actions style={Styles.actions}>
 
@@ -70,15 +70,15 @@ const Styles = StyleSheet.create({
         margin: 20,
         elevation: 10,
         shadowColor:'#4B4A67', 
-        shadowOffset:'1', 
+        shadowOffset: '1', 
         shadowColor: '#4B4A67',
-        shadowOffset: {width: -1, height: 5},
+        shadowOffset: {width: -1, height: 8},
         shadowOpacity: 0.8,
-        shadowRadius: 2,
+        shadowRadius: 3,
     },
     contact: {
         backgroundColor:'#4B4A67', 
-        padding:8, 
+        padding: 8, 
         color:'white', 
         fontFamily: 'KohinoorTelugu-Medium',
     },
@@ -90,9 +90,10 @@ const Styles = StyleSheet.create({
     },
     reach: {
         backgroundColor:'#4B4A67', 
-        padding: 8,
+        padding: 10,
         color:'white',
-        fontFamily: 'KohinoorTelugu-Medium',
+        fontWeight:'bold',
+        fontSize: 10,
     },
     action2: {
         color:'#4B4A67',

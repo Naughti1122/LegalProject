@@ -9,7 +9,6 @@ import DisplayCases from './Lawyer/DisplayCases';
 import SignUpScreen from './Lawyer/SignUpScreen';
 import PhoneCall from './PhoneCall';
 import Whatsapp from './Whatsapp';
-import Details from '../Screens/Details';
 import SingullarCase from './Lawyer/SingullarCase';
 
 const Navigation = () => {
@@ -28,7 +27,6 @@ const Navigation = () => {
           <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
           <Stack.Screen name='PhoneCall' component={PhoneCall} />
           <Stack.Screen name='Whatsapp' component={Whatsapp} />
-          <Stack.Screen name='Details' component={Details} />
           <Stack.Screen name='SingullarCase' component={SingullarCase} />
         </Stack.Navigator>
     </NavigationContainer>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, KeyboardAvoidingView, 
 TextInput, StyleSheet, Text, 
-Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView, TouchableOpacity, Animated } from 'react-native';
+Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons'; 
 import app from '../../Firebase/Config';
 import { v4 as uuidv4 } from 'uuid';
@@ -48,19 +48,18 @@ const PenComponent = ({navigation}) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
             <View style={{marginHorizontal:20}}>
-              <TextInput placeholderTextColor='white' style={styles.textInputtwo} placeholder='Type your name here...' />
                 <TextInput 
                 value={issue}
                 onChangeText={(text)=>{setIssue(text)}}
                 placeholderTextColor='white' multiline={true} 
-                maxLength={400} placeholder="Summarize your case here..." 
+                maxLength={500} placeholder="Summarize your case here..." 
                 style={styles.textInput} />
             </View>
-              <View style={{marginTop:20}}>
+            <View style={{marginTop:20}}>
                 <Text 
-                style={{fontSize:18, marginBottom: 10, fontFamily:'KohinoorTelugu-Medium', color:'#4B4A67', textAlign:'center'}}>
+                  style={{fontSize:15, color:'#4B4A67', fontWeight:'bold', textAlign:'center'}}>
                   FILL THE FORMS BELOW</Text>
-                <View style={{alignItems:'flex-start', marginHorizontal:50}}>
+                <View style={{alignItems:'center'}}>
                 <View style={styles.infills}>
                       <Ionicons style={{paddingHorizontal:10}} name="person-add-outline" size={30} color="#4B4A67"  />
                     <TextInput
@@ -108,16 +107,16 @@ const styles = StyleSheet.create({
   },
   inner: {
     flex: 1,
-    justifyContent: 'space-around' ,
+    justifyContent: 'space-around',
   },
   textInput: {
-    marginTop: 20,
     fontSize: 15,
     color: 'white',
     fontFamily: 'KohinoorTelugu-Medium',
     backgroundColor: '#4B4A67',
     padding: 10,
-    height: 200,
+    height: 250,
+    borderRadius: 5
   },
   textInputtwo: {
     fontSize: 15,
@@ -141,7 +140,7 @@ const styles = StyleSheet.create({
   },
   infills: {
     flexDirection:'row',
-    marginVertical: 20,
+    paddingVertical: 20,
   },
   infilltext: {
     fontSize: 16,

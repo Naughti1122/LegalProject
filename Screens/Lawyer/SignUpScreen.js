@@ -5,7 +5,6 @@ TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback,
 Keyboard, TouchableOpacity  } from 'react-native';
 import app from '../../Firebase/Config';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = ({navigation}) => {
 
@@ -15,15 +14,15 @@ const SignUpScreen = ({navigation}) => {
 
   const auth = getAuth(app);
 
-  // const handleSignUp = () => {
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //   .then(userCredentials => {
-  //     const user = userCredentials.user;
-  //     console.log('Logged In with:', user.email);
-  //     navigation.navigate('DisplayCases')
-  // })
-  // .catch(error =>alert('Log In First'));
-  // };
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(userCredentials => {
+      const user = userCredentials.user;
+      console.log('Logged In with:', user.email);
+      navigation.navigate('DisplayCases')
+  })
+  .catch(error =>alert('Log In First'));
+  };
 
 
 
@@ -66,7 +65,7 @@ const SignUpScreen = ({navigation}) => {
               secureTextEntry={true} placeholder="Password" style={styles.textInput} />
           </View>
 
-          <TouchableOpacity style={styles.btnContainer} onPress={()=>navigation.navigate('DisplayCases')}>
+          <TouchableOpacity style={styles.btnContainer} onPress={handleSignUp}>
                 <Text style={{fontFamily: 'KohinoorTelugu-Medium',alignSelf: 'center', color: 'white', padding:10}}>SUBMIT</Text>
           </TouchableOpacity>
         </View>

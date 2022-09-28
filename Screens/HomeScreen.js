@@ -1,8 +1,27 @@
 import React from 'react';
 import {View, StyleSheet, SafeAreaView, Image, Text, TouchableOpacity} from 'react-native';
 import golegal from '../assets/golegal.png'; 
+import app from '../Firebase/Config';
+import { getAuth } from 'firebase/auth';
 
 const HomeScreen = ({navigation}) => {
+
+  const auth = getAuth(app);
+
+  
+
+  const handleEnter = () => {
+    const unsubscribe = auth.onAuthStateChanged((user)=>{
+      if (user) {
+        navigation.navigate('DisplayCases');
+      } else {
+        navigation.navigate('SignUpScreen');
+      }
+    });
+    return unsubscribe;
+  };
+
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor:'white'}}>
       <View style={styles.imageicon}>
@@ -14,7 +33,7 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={styles.bottom}>
             <View style={styles.bottomtext}>
-          <TouchableOpacity style={styles.optionbtn} onPress={()=>navigation.navigate('DisplayCases')}>
+          <TouchableOpacity style={styles.optionbtn} onPress={handleEnter}>
               <Text style={styles.option}>TAKE A CASE</Text>
           </TouchableOpacity>
               <Text style={{fontWeight: 'bold', fontSize: 15, color:'#4B4A67', paddingHorizontal:30}}> OR </Text>
@@ -57,7 +76,7 @@ const styles = StyleSheet.create({
   optionbtn: {
     padding: 5,
     borderRadius: 10,
-    width: 150,
+    width: 150 ,
     borderBottomWidth: 2,
     borderBottomColor: '#4B4A67',
     marginBottom: 100,
