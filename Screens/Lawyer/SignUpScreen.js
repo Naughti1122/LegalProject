@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Ionicons, AntDesign, FontAwesome5 } from '@expo/vector-icons'; 
 import { View, KeyboardAvoidingView, 
 TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback,
-Keyboard, TouchableOpacity  } from 'react-native';
+Keyboard, TouchableOpacity, SafeAreaView  } from 'react-native';
 import app from '../../Firebase/Config';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import InputScrollView from 'react-native-input-scroll-view';
 
 const SignUpScreen = ({navigation}) => {
 
@@ -12,9 +13,14 @@ const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [error, setError] = useState(false);
+
   const auth = getAuth(app);
 
   const handleSignUp = () => {
+    if (username.length==0||email.length==0||password==0) {
+      setError(true);
+    }
     createUserWithEmailAndPassword(auth, email, password)
     .then(userCredentials => {
       const user = userCredentials.user;
@@ -27,11 +33,9 @@ const SignUpScreen = ({navigation}) => {
 
 
 
-  return (  
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+  return (
+    <SafeAreaView style={styles.container}>
+        <InputScrollView>
         <View style={styles.inner}>
           <Text style={styles.header}>WELCOME!</Text>
           <Text style={styles.miniheader}>Create an account here</Text>
@@ -44,6 +48,9 @@ const SignUpScreen = ({navigation}) => {
               onChangeText={(username)=>{setUserName(username)}}
               keyboardType='default' placeholder="Username" style={styles.textInput} />
           </View>
+          {error&&username.length<=0  ? 
+          <Text style={{padding:5, fontWeight:'200', color:'red', alignSelf:'center'}}>Username can't be empty</Text>
+          : null } 
 
           <View 
             style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
@@ -53,7 +60,9 @@ const SignUpScreen = ({navigation}) => {
               value={email}
               keyboardType='email-address' placeholder="Email" style={styles.textInput} />
           </View>
-
+          {error&&email<=0 ? 
+          <Text style={{padding:5, fontWeight:'200', color:'red', alignSelf:'center'}}>Email can't be empty</Text> 
+          : null}
           <View 
             style={{flexDirection:'row', alignItems:'center', justifyContent:'center', padding:20}}>
             <FontAwesome5 style={{paddingHorizontal:10}} name="user-lock" size={30} color="#4B4A67" />
@@ -64,13 +73,15 @@ const SignUpScreen = ({navigation}) => {
               returnKeyType='done'
               secureTextEntry={true} placeholder="Password" style={styles.textInput} />
           </View>
-
+          {error && password <= 0 ? 
+          <Text style={{padding:5, fontWeight:'200', color:'red', alignSelf:'center'}}>Password can't be empty</Text> 
+          : null}
           <TouchableOpacity style={styles.btnContainer} onPress={handleSignUp}>
-                <Text style={{fontFamily: 'KohinoorTelugu-Medium',alignSelf: 'center', color: 'white', padding:10}}>SUBMIT</Text>
+                <Text style={{fontWeight:'bold',alignSelf: 'center', color: 'white', padding:10}}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </InputScrollView>
+    </SafeAreaView> 
   );
 };
 
@@ -80,27 +91,25 @@ const styles = StyleSheet.create({
   },
   inner: {
     padding: 50,
-    flex: 1,
-    justifyContent: "center"
   },
   header: {
     fontSize: 40,
     color: '#4B4A67',
     alignSelf: 'center',
-    fontFamily: 'KohinoorTelugu-Medium',
+    fontFamily: 'Palatino-Bold',
   },
   miniheader: {
     fontSize: 15,
     marginBottom: 50,
     color: '#4B4A67',
     alignSelf: 'center',
-    fontFamily: 'KohinoorTelugu-Medium',
+    fontFamily: 'Palatino-Bold',
   },
   textInput: {
     borderColor: "#8f8f8f",
     borderBottomWidth: 1,
     fontSize: 18,
-    fontFamily: 'KohinoorTelugu-Medium',
+    fontFamily: 'Kohinoor Bangla',
     width:250
   },
   btnContainer: {

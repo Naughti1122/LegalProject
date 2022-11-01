@@ -10,10 +10,10 @@ import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 const PenComponent = ({navigation}) => {
 
-  const [issue, setIssue] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [issue, setIssue] = useState(`Hello, I've been working for my boss as a shop manager, and for about 3 months now, I've not being paid. He keeps telling me I can't have my salary because of low sales, which i don't think is my fault in anyway. Please I'm in need of legal advice on how to tackle this issue and eventually get my salary.`);
+  const [name, setName] = useState('Samuel');
+  const [email, setEmail] = useState('sammy@gmail.com');
+  const [phoneNumber, setPhoneNumber] = useState('0504827297');
 
   const db = getFirestore(app);
 
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
     fontFamily: 'KohinoorTelugu-Medium',
     backgroundColor: '#4B4A67',
     padding: 10,
-    height: 250,
-    borderRadius: 5
+    height: 200,
+    borderRadius: 5,
   },
   textInputtwo: {
     fontSize: 15,
